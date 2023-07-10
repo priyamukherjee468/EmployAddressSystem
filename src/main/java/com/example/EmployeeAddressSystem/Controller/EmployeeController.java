@@ -23,13 +23,13 @@ public class EmployeeController {
     public Iterable<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
     }
-    @DeleteMapping("DeleteEmployee/{deleteId}")
+    @DeleteMapping("deleteEmployee/{empId}")
 
-    public String deleteEmployee(@PathVariable long empId) {
+    public String deleteEmployee(@PathVariable Long empId) {
         return employeeService.deleteEmployee(empId);
     }
-    @PutMapping("updateEmployee/{empId}")
-    public String updateEmployeeById(@PathVariable long empId,@PathVariable String empName) {
+    @PutMapping("updateEmployee/{empId}/{empName}")
+    public String updateEmployeeById(@PathVariable Long empId,@PathVariable String empName) {
         return employeeService.updateEmployeeById(empId,empName);
     }
 

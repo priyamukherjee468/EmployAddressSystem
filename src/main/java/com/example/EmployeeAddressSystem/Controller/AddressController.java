@@ -23,13 +23,12 @@ public class AddressController {
     public Iterable<Address> getAllAddress(){
         return addressService.getAllAddress();
     }
-    @DeleteMapping("Address/{Id}")
-
-    public String deleteAddress(@PathVariable long Id) {
+    @DeleteMapping("address/{Id}")
+    public String deleteAddress(@PathVariable Long Id) {
         return addressService.deleteAddress(Id);
     }
     @PutMapping("address/{addId}/{city}/{state}/{zipcode}")
-    public String updateAddressById(@PathVariable long addId,@PathVariable String addName,@PathVariable String city,@PathVariable String state,@PathVariable String zipcode) {
-        return addressService.updateAddressById(addId,addName,city,state,zipcode);
+    public String updateAddressById(@PathVariable Long addId,@PathVariable String city,@PathVariable String state,@PathVariable String zipcode) {
+        return addressService.updateAddressById(addId,city,state,zipcode);
     }
 }

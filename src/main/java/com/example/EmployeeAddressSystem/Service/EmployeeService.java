@@ -28,24 +28,25 @@ public class EmployeeService {
 
 
 
-    public String deleteEmployee(long empId) {
+    public String deleteEmployee(Long empId) {
          iEmployeeRepo.deleteById(empId);
          return "deleted";
     }
 
-    public String updateEmployeeById(long empId, String empName) {
+    public String updateEmployeeById(Long empId, String empName) {
         Optional<Employee> EmployeeOpt = iEmployeeRepo.findById(empId);
-        Employee myemployee = null;
+
         if(EmployeeOpt.isPresent())
         {
-            myemployee = EmployeeOpt.get();
+            Employee employee=EmployeeOpt.get();
+           employee.setEmpName(empName);
+            iEmployeeRepo.save(employee);
+            return "employee update successfully.";
         }
         else {
             return "Id not Found!!!";
         }
-        myemployee.setEmpName(empName);
-        iEmployeeRepo.save(myemployee);
-        return "Employee name updated";
+
 
     }
 
